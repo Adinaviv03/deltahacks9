@@ -1,7 +1,7 @@
 class task:
 
     name = ""
-    length = 1
+    length = 1 # 30 mins
     isBreak = True
 
     def __init__(self) -> None:
