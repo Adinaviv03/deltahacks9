@@ -51,7 +51,17 @@ class day:
             return
         
         totalBreakTime = self.numBlocks - hoursOfWork
-        singleBreakTime = totalBreakTime/(len(self.taskList))
+        singleBreakTime = totalBreakTime/(len(self.taskList) - 1)
+
+        break1 = task()
+        break1.length = singleBreakTime
+        currentIndex = 0
+        for task in self.taskList:
+            blocks = task.length
+            for i in range(currentIndex, blocks):
+                self.schedule[i] = task
+
+
         
 
         
