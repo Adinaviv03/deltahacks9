@@ -9,27 +9,38 @@
 </head>
 <body>
     <h1 id="title">Day Planner</h1>
-    <div id="mainDiv">
-        <form id="form" action="">
-            <div>
-                <label for="task">Enter a Task:</label>
-                <input id="task" type="text" placeholder="">
-            </div>
-            <div>
-                <label for="time">Enter estimated duration (minutes):</label>
-                <input id="time" type="text" placeholder="">
-    
-            </div>
-    
-            <button id="button" onclick="myFunction()">Submit</button>
-    
-        </form>
+
+    <div id ="inputSection">
+
+        <div id="mainDiv">
+            <form action="">
+                <label for="startTime">Enter a Task:</label>
+                <input id="startTime" type="time" placeholder="">
+            </form>
+            <form id="form" action="">
+                <div>
+                    <label for="task">Enter a Task:</label>
+                    <input id="task" type="text" placeholder="">
+                </div>
+                <div>
+                    <label for="time">Enter estimated duration (minutes):</label>
+                    <input id="time" type="text" placeholder="">
+        
+                </div>
+                <button id="button" onclick="myFunction()">Submit</button>
+        
+            </form>
+        
+        </div>
     
     </div>
 
-    <div>
-        <ul id="myList">
-        </ul>
+    <button id="planButton">Plan Day</button>
+
+
+    <div id="planSection">
+        <p>hi</p>
+
     </div>
 
     <script src="main.js"></script>

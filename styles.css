@@ -7,5 +7,20 @@ h1 {
     font-size: 60px;
 }
 
-#planDay {
+button{
+    size: 100px;
+}
+
+#inputSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background-color: beige;
+    width: 40%;
+    height: 200px;
+}
+
+#planSection {
+    background-color: purple;
 }
