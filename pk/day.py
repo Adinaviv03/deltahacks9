@@ -1,16 +1,21 @@
 from task import task
+from task import block
 
 class day:
     
     start = 0
     end = 23
-    numBlocks = 48
-    taskList = []
+    numBlocks = 48 ##unit of half hours
+    inputtedTaskList = []
+    schedule = []
 
     def __init__(self, startTime, endTime):
         self.start = startTime
         self.end = endTime
         self.numBlocks = (self.end - self.start)*2
+        for i in range(self.numBlocks):
+            self.schedule.append(task())
+
     
     def displayTime(self, time):
         if time <= 12:
@@ -41,8 +46,12 @@ class day:
         for task in self.taskList:
             hoursOfWork += task.length
         
-        if hoursOfWork > self.numBlocks/2:
+        if hoursOfWork > self.numBlocks:
             print("Not enough time to finish tasks, edit time or number of tasks")
             return
+        
+        totalBreakTime = self.numBlocks - hoursOfWork
+        singleBreakTime = totalBreakTime/(len(self.taskList))
+        
 
         
