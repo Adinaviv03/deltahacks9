@@ -50,7 +50,7 @@ class day:
             print("Not enough time to finish tasks, edit time or number of tasks")
             return
         
-        totalBreakTime = self.numBlocks - hoursOfWork
+        totalBreakTime = (self.numBlocks - hoursOfWork)
         singleBreakTime = totalBreakTime/(len(self.taskList) - 1)
 
         break1 = task()
@@ -58,8 +58,11 @@ class day:
         currentIndex = 0
         for task in self.taskList:
             blocks = task.length
-            for i in range(currentIndex, blocks):
+            for i in range(currentIndex, currentIndex + blocks):
                 self.schedule[i] = task
+            currentIndex += blocks
+            for j in range (currentIndex, currentIndex + singleBreakTime):
+                self.schedule[j] = break1
 
 
         
