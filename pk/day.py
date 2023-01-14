@@ -55,8 +55,18 @@ class day:
 
         break1 = task()
         break1.length = singleBreakTime
+        
+        newTaskList = []
+        for task in self.inputtedTaskList:
+            newTaskList.append(task)
+            newTaskList.append(break1)
+        newTaskList = newTaskList[:-1]
+        
+
+
+
         currentIndex = 0
-        for task in self.taskList:
+        for task in self.inputtedTaskList:
             blocks = task.length
             for i in range(currentIndex, currentIndex + blocks):
                 self.schedule[i] = task
