@@ -16,8 +16,8 @@ class day:
         for i in range(self.numBlocks):
             self.schedule.append(task())
 
-    
-    def displayTime(self, time):
+    @staticmethod
+    def displayTime(time):
         if time <= 12:
             output = str(time) + "am"
             return output
@@ -61,8 +61,6 @@ class day:
             newTaskList.append(task)
             newTaskList.append(break1)
         newTaskList = newTaskList[:-1]
-        
-
 
 
         currentIndex = 0
@@ -71,8 +69,20 @@ class day:
             for i in range(currentIndex, currentIndex + blocks):
                 self.schedule[i] = task
             currentIndex += blocks
-            for j in range (currentIndex, currentIndex + singleBreakTime):
-                self.schedule[j] = break1
+
+    def displaySchedule(self):
+        blockTime = self.start
+        last = ""
+        for block in self.schedule:
+            if (last == block.name):
+                print("|")
+            else:
+                print(day.displayTime(blockTime))
+                print(block.name)
+            blockTime += 1
+            last = block.name
+
+
 
 
         
