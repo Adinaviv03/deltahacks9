@@ -5,7 +5,7 @@ class day:
     start = 0
     end = 23
     numBlocks = 48
-    tasks = {}
+    taskList = []
 
     def __init__(self, startTime, endTime):
         self.start = startTime
@@ -34,5 +34,15 @@ class day:
         return output
 
     def addTask(self, newTask):
-        self.tasks[newTask.name] = newTask.length
+        self.taskList.append(newTask)
+        
+    def createSchedule(self):
+        hoursOfWork = 0
+        for task in self.taskList:
+            hoursOfWork += task.length
+        
+        if hoursOfWork > self.numBlocks/2:
+            print("Not enough time to finish tasks, edit time or number of tasks")
+            return
+
         
