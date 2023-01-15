@@ -33,6 +33,8 @@ function planDay() {
     day1.addTask(task3);
     day1.createSchedule();
     day1.displaySchedule();
+
+    colourDay();
 }
 
 function timeSet() {
