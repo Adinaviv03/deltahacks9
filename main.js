@@ -243,13 +243,18 @@ function colourDay(arr){
     let table = document.getElementById("dayTable");
     let cells = table.querySelectorAll("td:nth-child(2)");
 
+    let randColour = 51;
+
     let y = 0;
     let j=0
     let timeT = (parseInt(x*2)-10);
     for (let i = 0; i < cells.length; i++) {
         if(i >= timeT){
             if(arr[i-timeT] == 0){
-                cells[i].style.background = "black";
+                if(arr[i-timeT-1] != 0){
+                    randColour = Math.random()*200;
+                }
+                cells[i].style.background = "rgb(randColour, 211, 231)";
             }
         }
     }
