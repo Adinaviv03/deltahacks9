@@ -17,8 +17,6 @@ class task:
         self.isBreak = False
 
 
-
-
 class day:
     
     start = 0
