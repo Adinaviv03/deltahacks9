@@ -1,5 +1,5 @@
-task = []
-time = []
+let task = []
+let time = []
 
 class Day {
     constructor(startTime, endTime) {
@@ -261,6 +261,7 @@ function colourDay(arr){
 
     let y = 0;
     let j=0
+    
     let timeT = (parseInt(x*2));
     for (let i = 0; i < cells.length; i++) {
         if(i >= timeT){
@@ -269,7 +270,9 @@ function colourDay(arr){
                      randColour = Math.random()*100;
                      randColourtwo = Math.random()*100;
                      randColourthree = Math.random()*100;
-                     
+                     cells[i].innerHTML = task[j]
+                     cells[i].style.color = "black";
+                     j += 1
                 }
                 
                 cells[i].style.background = `rgb(${randColour},${randColourtwo}, ${randColourthree})`;
