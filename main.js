@@ -93,7 +93,7 @@ class Day {
         }
 
         if (hoursOfWork > this.numBlocks) {
-            console.log("Not enough time to finish tasks, edit time or number of tasks");
+            alert("Not enough time to finish tasks, edit time or number of tasks");
             return;
         }
         
