@@ -162,6 +162,10 @@ const listSection = document.querySelector('#planSection')
 
 button.onclick = function() {
 
+    if(timeSet()[0][2] != ':' || timeSet()[1][2] != ':' ){
+        alert("Please Enter Start and End Time First")
+    }
+
     let taskk = document.getElementById('task').value;
     let timee = document.getElementById('time').value;
 
