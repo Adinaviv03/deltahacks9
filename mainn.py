@@ -7,7 +7,7 @@ from pk.day import task
 
 class mainn:
     print("hello world")
-    day1 = day(12, 19)
+    day1 = day(8, 19)
     print("My day starts at", day1.displayTime(day1.start) , "and ends at", day1.displayTime(day1.end))
     print("I have", day1.numBlocks, "blocks available today!")
     task1 = task("walk dogs", 1)

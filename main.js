@@ -46,6 +46,18 @@ function timeSet() {
 
 }
 
+function convertToBinarySchedule(myDay) {
+    let newList = [];
+    for (let day of myDay.schedule) {
+        let bit = 0;
+        if (day.name == "break") {
+            bit = 1;
+        }
+        newList.push(bit);
+    }
+    return newList
+}
+
 class Task {
     constructor(name = "", length = 1) {
         this.name = name;
@@ -56,6 +68,7 @@ class Task {
 
 
 class Day {
+
     constructor(startTime, endTime) {
         this.start = startTime;
         this.end = endTime;
@@ -69,13 +82,6 @@ class Day {
     }
 
     static displayTime(time) {
-        if (time < 12) {
-            let output = time + "am";
-            return output;
-        } else if (time === 0 || time === 24) {
-            return "12am";
-        }
-
         let pmTimes = {
             12: "12",
             13: "1",
@@ -92,8 +98,24 @@ class Day {
         };
 
         let stringTime = time.toString();
+        
+        if (time < 12) {
+            if (stringTime.endsWith(".5")){
+                let output = stringTime.slice(0, -2);
+                output += ":30pm";
+                return output;
+            }
+            let output = time + "am";
+            return output;
+        } else if (time === 0 || time === 24) {
+            if (stringTime.endsWith(".5")){
+                output += "12:30am";
+                return output;
+            }
+            return "12am";
+        }
 
-        if (stringTime.endsWith(".5")) {
+        else if (stringTime.endsWith(".5")) {
             let output = stringTime.slice(0, -2);
             output = pmTimes[parseInt(output)];
             output += ":30pm";
@@ -159,7 +181,6 @@ class Day {
     }
 
 }
-
 
 
 
