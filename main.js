@@ -56,13 +56,6 @@ class Day {
     }
 
     static displayTime(time) {
-        if (time < 12) {
-            let output = time + "am";
-            return output;
-        } else if (time === 0 || time === 24) {
-            return "12am";
-        }
-
         let pmTimes = {
             12: "12",
             13: "1",
@@ -79,8 +72,24 @@ class Day {
         };
 
         let stringTime = time.toString();
+        
+        if (time < 12) {
+            if (stringTime.endsWith(".5")){
+                let output = stringTime.slice(0, -2);
+                output += ":30pm";
+                return output;
+            }
+            let output = time + "am";
+            return output;
+        } else if (time === 0 || time === 24) {
+            if (stringTime.endsWith(".5")){
+                output += "12:30am";
+                return output;
+            }
+            return "12am";
+        }
 
-        if (stringTime.endsWith(".5")) {
+        else if (stringTime.endsWith(".5")) {
             let output = stringTime.slice(0, -2);
             output = pmTimes[parseInt(output)];
             output += ":30pm";
@@ -148,7 +157,7 @@ class Day {
 }
 
 console.log("hello world");
-let day1 = new Day(12, 19);
+let day1 = new Day(8, 19);
 console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
 console.log("I have", day1.numBlocks, "blocks available today!");
 let task1 = new Task("walk dogs", 1);

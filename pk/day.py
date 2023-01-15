@@ -71,7 +71,7 @@ class day:
             return output
         
         
-        if stringTime[-2:] == ".5":
+        elif stringTime[-2:] == ".5":
             output = stringTime[:-2]
             output = str(pmTimes[int(output)])
             output += ":30pm"
