@@ -2,6 +2,10 @@ body{
     background: linear-gradient(to bottom, #0081b4, #ee40a2);
 }
 
+input {
+    border-radius: 5px;
+}
+
 #innerTitle {
     background-color: rgb(250, 211, 231);
     margin-top: 0;
@@ -74,10 +78,6 @@ table{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#fiveAM {
-    background-color: black;
-}
-
-#fiveAMM {
-    background-color: black;
+#0 {
+    color: black;
 }
