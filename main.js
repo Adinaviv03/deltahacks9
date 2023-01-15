@@ -21,7 +21,18 @@ function planDay() {
     const finishT = timeSet()[1]
     console.log(beginT)
     console.log(finishT)
-
+    
+    let day1 = new Day(12, 19);
+    console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
+    console.log("I have", day1.numBlocks, "blocks available today!");
+    let task1 = new Task(task[0], time[0]);
+    let task2 = new Task(task[1], time[1]);
+    let task3 = new Task(task[2], time[2]);
+    day1.addTask(task1);
+    day1.addTask(task2);
+    day1.addTask(task3);
+    day1.createSchedule();
+    day1.displaySchedule();
 }
 
 function timeSet() {
