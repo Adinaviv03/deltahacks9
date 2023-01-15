@@ -191,6 +191,12 @@ class Day {
 
 function colourDay(arr){
     const beginT = timeSet()[0]
+
+    let table = document.getElementById("dayTable");
+    let cells = table.querySelectorAll("td:nth-child(2)");
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].style.background = "black";
+    }
     
 }
 
