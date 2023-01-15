@@ -16,5 +16,6 @@ class mainn:
     day1.addTask(task1)
     day1.addTask(task2)
     day1.addTask(task3)
-    day1.createSchedule
-    day1.displaySchedule
+    day1.createSchedule()
+    day1.displaySchedule()
+    

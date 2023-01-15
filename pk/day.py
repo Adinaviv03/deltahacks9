@@ -32,15 +32,19 @@ class day:
         self.end = endTime
         self.numBlocks = (self.end - self.start)*2
         for i in range(self.numBlocks):
-            self.schedule.append(task())
+            self.schedule.append(task("none", 1))
+        
 
     @staticmethod
     def displayTime(time):
-        if time <= 12:
+        if time < 12:
             output = str(time) + "am"
             return output
+        elif time == 0 or time == 24:
+            output = "12am"
         
         pmTimes = {
+            12: "12",
             13: "1",
             14: "2",
             15: "3",
@@ -57,48 +61,52 @@ class day:
         return output
 
     def addTask(self, newTask):
-        self.taskList.append(newTask)
+        self.inputtedTaskList.append(newTask)
         
     def createSchedule(self):
+        
         hoursOfWork = 0
-        for task in self.taskList:
-            hoursOfWork += task.length
+        for myTask in self.inputtedTaskList:
+            hoursOfWork += myTask.length
         
         if hoursOfWork > self.numBlocks:
             print("Not enough time to finish tasks, edit time or number of tasks")
             return
         
         totalBreakTime = (self.numBlocks - hoursOfWork)
-        singleBreakTime = totalBreakTime/(len(self.taskList) - 1)
+        singleBreakTime = totalBreakTime/(len(self.inputtedTaskList) - 1)
 
-        break1 = task()
-        break1.length = singleBreakTime
+        break1 = task("break", singleBreakTime)
         
         newTaskList = []
-        for task in self.inputtedTaskList:
-            newTaskList.append(task)
+        for myTask in self.inputtedTaskList:
+            newTaskList.append(myTask)
             newTaskList.append(break1)
         newTaskList = newTaskList[:-1]
 
 
         currentIndex = 0
-        for task in self.inputtedTaskList:
-            blocks = task.length
+        for myTask in self.inputtedTaskList:
+            blocks = myTask.length
             for i in range(currentIndex, currentIndex + blocks):
-                self.schedule[i] = task
+                self.schedule[i] = myTask
             currentIndex += blocks
 
     def displaySchedule(self):
+        
         blockTime = self.start
+        realTime = self.start
         last = ""
         for block in self.schedule:
             if (last == block.name):
                 print("|")
             else:
-                print(day.displayTime(blockTime))
-                print(block.name)
+                print(day.displayTime(realTime), "-", block.name)
+                print("|")
             blockTime += 1
+            realTime += 0.5
             last = block.name
+        
 
 
 
