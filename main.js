@@ -268,8 +268,9 @@ function colourDay(arr){
                 // if(arr[i-timeT-1] != 0){
                 //     randColour = Math.random()*200;
                 // }
+                cells[i].style.background = "black";
             }
-            cells[i].style.background = "black";
+            
         }
     }
     
