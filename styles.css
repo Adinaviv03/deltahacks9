@@ -12,6 +12,10 @@ input {
     border-radius: 10px;
 }
 
+#makeWhite {
+    color: rgb(250, 211, 231);
+}
+
 h1 {
     color: rgb(0, 129, 180);
     text-align: center;
