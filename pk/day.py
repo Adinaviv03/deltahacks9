@@ -37,12 +37,6 @@ class day:
 
     @staticmethod
     def displayTime(time):
-        if time < 12:
-            output = str(time) + "am"
-            return output
-        elif time == 0 or time == 24:
-            output = "12am"
-        
         pmTimes = {
             12: "12",
             13: "1",
@@ -57,7 +51,25 @@ class day:
             22: "10",
             23: "11"
         }
+        
         stringTime = str(time)
+
+        if time < 12:
+            if stringTime[-2:] == ".5":
+                output = stringTime[:-2]
+                output += ":30am"
+                return output
+            output = str(int(time)) + "am"
+            return output
+
+
+        elif time == 0 or time == 24:
+            if stringTime[-2:] == ".5":
+                output = "12:30am"
+                return output
+            output = "12am"
+            return output
+        
         
         if stringTime[-2:] == ".5":
             output = stringTime[:-2]
