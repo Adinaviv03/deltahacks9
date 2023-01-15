@@ -272,6 +272,8 @@ function colourDay(arr){
                      randColourthree = Math.random()*100;
                      cells[i].innerHTML = task[j]
                      cells[i].style.color = "black";
+                     cells[i].style.textAlign = "center";
+                     cells[i].style.fontFamily = "Roboto";
                      j += 1
                 }
                 
