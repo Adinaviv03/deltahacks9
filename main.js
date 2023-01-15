@@ -1,85 +1,6 @@
 task = []
 time = []
 
-const mainDiv = document.querySelector('#mainDiv')
-const listSection = document.querySelector('#planSection')
-
-
-button.onclick = function() {
-  var output = document.createElement('li');
-  output.innerHTML = document.getElementById('task').value + '   --    ' + document.getElementById('time').value + ' hours';
-  task.push(document.getElementById('task').value)
-  time.push(document.getElementById('time').value)
-  listSection.appendChild(output);
-
-};
-
-mainDiv.appendChild(button);
-
-
-function planDay() {
-    const beginT = timeSet()[0]
-    const finishT = timeSet()[1]
-    console.log(beginT)
-    console.log(finishT)
-    
-    let day1 = new Day(timeSet()[0], timeSet()[1]);
-    console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
-    console.log("I have", day1.numBlocks, "blocks available today!");
-    let task1 = new Task(task[0], time[0]);
-    let task2 = new Task(task[1], time[1]);
-    let task3 = new Task(task[2], time[2]);
-    day1.addTask(task1);
-    day1.addTask(task2);
-    day1.addTask(task3);
-    day1.createSchedule();
-    day1.displaySchedule();
-
-    let binaryArr = convertToBinarySchedule(myDay)
-    colourDay(binaryArr);
-}
-
-function timeSet() {
-    const startT = document.querySelector('#startTime').value
-    const endT =  document.querySelector('#endTime').value
-
-    x = [startT, endT]
-
-    return x
-
-}
-
-function convertToBinarySchedule(myDay) {
-    let newList = [];
-    for (let day of myDay.schedule) {
-        let bit = 0;
-        if (day.name == "break") {
-            bit = 1;
-        }
-        newList.push(bit);
-    }
-    return newList
-}
-
-
-class Task {
-    constructor(name = "", length = 1) {
-        this.name = name;
-        this.length = length * 2;
-        this.isBreak = false;
-    }
-}
-
-function timeConverter(rawTime) {
-    const rawTime = rawTime.split(":");
-    let formattedTime = rawTime[0].parseInt;
-    if (rawTime[1] == "30") {
-        formattedTime = formattedTime + 0.5;
-    }
-    return formattedTime
-}
-
-
 class Day {
     constructor(startTime, endTime) {
         
@@ -125,7 +46,7 @@ class Day {
             23: "11",
         };
 
-        let stringTime = time.toString();
+        let stringTime = time;
 
         if (time < 12) {
             if (stringTime.endsWith(".5")){
@@ -158,6 +79,7 @@ class Day {
     }
 
     createSchedule() {
+        console.log(this.inputtedTaskList.length)
         let hoursOfWork = 0;
         for (let myTask of this.inputtedTaskList) {
             hoursOfWork += myTask.length;
@@ -168,8 +90,12 @@ class Day {
             return;
         }
 
+        console.log(this.numBlocks)
+        console.log(hoursOfWork)
+        console.log(totalBreakTime)
+
         let totalBreakTime = this.numBlocks - hoursOfWork;
-        let singleBreakTime = Math.floor(totalBreakTime / (this.inputtedTaskList.length - 1));
+        let singleBreakTime = parseInt(totalBreakTime / (this.inputtedTaskList.length - 1));
 
         let break1 = new Task("break", singleBreakTime / 2);
 
@@ -182,7 +108,7 @@ class Day {
 
         let currentIndex = 0;
         for (let myTask of newTaskList) {
-            let blocks = Math.floor(myTask.length);
+            let blocks = parseInt(myTask.length);
             console.log(blocks);
             for (let i = currentIndex; i < currentIndex + blocks; i++) {
                 this.schedule[i] = myTask;
@@ -211,16 +137,120 @@ class Day {
 }
 
 
+let finalDay
+
+function makeDay(){
+    finalDay = new Day(timeSet()[0], timeSet()[1]);
+}
+
+const mainDiv = document.querySelector('#mainDiv')
+const listSection = document.querySelector('#planSection')
+
+
+button.onclick = function() {
+
+    let taskk = document.getElementById('task').value;
+    let timee = document.getElementById('time').value;
+
+    var output = document.createElement('li');
+    output.innerHTML = document.getElementById('task').value + '   --    ' + document.getElementById('time').value + ' hours';
+    task.push(document.getElementById('task').value)
+    time.push(document.getElementById('time').value)
+    listSection.appendChild(output);
+
+    let dayTask = new Task(taskk,timee);
+    finalDay.addTask(dayTask);
+  
+
+};
+
+mainDiv.appendChild(button);
+
+
+function planDay() {
+    const beginT = timeSet()[0]
+    const finishT = timeSet()[1]
+    console.log(beginT)
+    console.log(finishT)
+    
+    let day1 = new Day(timeSet()[0], timeSet()[1]);
+    // console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
+    // console.log("I have", day1.numBlocks, "blocks available today!");
+    // let task1 = new Task(task[0], time[0]);
+    // let task2 = new Task(task[1], time[1]);
+    // let task3 = new Task(task[2], time[2]);
+    // day1.addTask(task1);
+    // day1.addTask(task2);
+    // day1.addTask(task3);
+    // day1.createSchedule();
+    finalDay.createSchedule();
+    // day1.displaySchedule();
+
+    let binaryArr = convertToBinarySchedule(finalDay);
+    colourDay(binaryArr);
+}
+
+function timeSet() {
+    const startT = document.querySelector('#startTime').value
+    const endT =  document.querySelector('#endTime').value
+
+    x = [startT, endT]
+
+    return x
+
+}
+
+function convertToBinarySchedule(myDay) {
+    let newList = [];
+    for (let day of myDay.schedule) {
+        let bit = 0;
+        if (day.name == "break") {
+            bit = 1;
+        }
+        newList.push(bit);
+    }
+    return newList
+}
+
+
+class Task {
+    constructor(name = "", length = 1) {
+        this.name = name;
+        this.length = length * 2;
+        this.isBreak = false;
+    }
+}
+
+function timeConverter(rawTime) {
+    const newrawTime = rawTime.split(":");
+    let formattedTime = newrawTime[0].parseInt;
+    if (newrawTime[1] == "30") {
+        formattedTime = formattedTime + 0.5;
+    }
+    return formattedTime
+}
+
+
+let arr = [1,1,1,0,0,1,0,0,1,1,0]
+colourDay(arr);
 
 
 function colourDay(arr){
     const beginT = timeSet()[0]
 
+    const x = timeConverter(beginT);
+
     let table = document.getElementById("dayTable");
     let cells = table.querySelectorAll("td:nth-child(2)");
+
+    let y = 0;
+    let j=0
+    let timeT = (parseInt(x*2)-10);
     for (let i = 0; i < cells.length; i++) {
-        if(arr[i] == 0){
-            cells[i].style.background = "black";
+        if(i >= timeT){
+            if(arr[i-timeT] == 0){
+                cells[i].style.background = "black";
+            }
         }
     }
     
