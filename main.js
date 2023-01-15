@@ -268,8 +268,11 @@ function colourDay(arr){
                 if(arr[i-timeT-1] != 0){
                      randColour = Math.random()*200;
                      randColourtwo = Math.random()*200;
+                     randColourthree = Math.random()*200;
+                     
                 }
-                cells[i].style.background = `rgb(${randColour},${randColourtwo}, 5)`;
+                
+                cells[i].style.background = `rgb(${randColour},${randColourtwo}, ${randColourthree})`;
             }
             
         }
