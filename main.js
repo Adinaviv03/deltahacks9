@@ -266,9 +266,9 @@ function colourDay(arr){
         if(i >= timeT){
             if(arr[i-timeT] == 0){
                 if(arr[i-timeT-1] != 0){
-                     randColour = Math.random()*200;
-                     randColourtwo = Math.random()*200;
-                     randColourthree = Math.random()*200;
+                     randColour = Math.random()*100;
+                     randColourtwo = Math.random()*100;
+                     randColourthree = Math.random()*100;
                      
                 }
                 
