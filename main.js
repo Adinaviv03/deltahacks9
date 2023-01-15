@@ -5,6 +5,9 @@ class Day {
     constructor(startTime, endTime) {
         
         const rawStartTime = startTime.split(":");
+        for (let numTime of rawStartTime) {
+            console.log(numTime);
+        }
         let formattedStartTime = 0;
         if (rawStartTime[1] == "30") {
             formattedStartTime = rawStartTime[0].parseInt + .5;
@@ -19,8 +22,12 @@ class Day {
         } else {
             formattedEndTime = rawEndTime[0].parseInt;
         }
-        this.start = formattedStartTime;
-        this.end = formattedEndTime;
+        //this.start = formattedStartTime;
+        this.start = timeConverter(startTime)
+        console.log(this.start);
+        //this.end = formattedEndTime;
+        this.end = timeConverter(endTime);
+        console.log(this.end);
         this.numBlocks = (this.end - this.start) * 2;
         this.inputtedTaskList = [];
         this.schedule = [];
@@ -89,10 +96,7 @@ class Day {
             console.log("Not enough time to finish tasks, edit time or number of tasks");
             return;
         }
-
-        console.log(this.numBlocks)
-        console.log(hoursOfWork)
-        console.log(totalBreakTime)
+        
 
         let totalBreakTime = this.numBlocks - hoursOfWork;
         let singleBreakTime = parseInt(totalBreakTime / (this.inputtedTaskList.length - 1));
@@ -223,7 +227,8 @@ class Task {
 
 function timeConverter(rawTime) {
     const newrawTime = rawTime.split(":");
-    let formattedTime = newrawTime[0].parseInt;
+    let formattedTime = parseInt(newrawTime[0]);
+    
     if (newrawTime[1] == "30") {
         formattedTime = formattedTime + 0.5;
     }
