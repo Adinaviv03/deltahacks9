@@ -70,14 +70,6 @@ class Task {
     }
 }
 
-function timeConverter(rawTime) {
-    const rawTime = rawTime.split(":");
-    let formattedTime = rawTime[0].parseInt;
-    if (rawTime[1] == "30") {
-        formattedTime = formattedTime + 0.5;
-    }
-    return formattedTime
-}
 
 class Day {
     constructor(startTime, endTime) {
@@ -124,25 +116,26 @@ class Day {
             23: "11",
         };
 
+        let stringTime = time.toString();
 
         if (time < 12) {
-            if (time.endsWith(".5")){
-                let output = time.slice(0, -2);
+            if (stringTime.endsWith(".5")){
+                let output = stringTime.slice(0, -2);
                 output += ":30pm";
                 return output;
             }
             let output = time + "am";
             return output;
         } else if (time === 0 || time === 24) {
-            if (time.endsWith(".5")){
+            if (stringTime.endsWith(".5")){
                 output += "12:30am";
                 return output;
             }
             return "12am";
         }
 
-        else if (time.endsWith(".5")) {
-            let output = time.slice(0, -2);
+        else if (stringTime.endsWith(".5")) {
+            let output = stringTime.slice(0, -2);
             output = pmTimes[parseInt(output)];
             output += ":30pm";
             return output;
