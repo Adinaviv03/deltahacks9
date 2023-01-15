@@ -263,7 +263,7 @@ function colourDay(arr){
     let j=0
     let timeT = (parseInt(x*2));
     for (let i = 0; i < cells.length; i++) {
-        if(i >= timeT+1){
+        if(i >= timeT){
             if(arr[i-timeT] == 0){
                 // if(arr[i-timeT-1] != 0){
                 //     randColour = Math.random()*200;
