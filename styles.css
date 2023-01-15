@@ -39,6 +39,8 @@ button {
 
 
 #inputSection {
+    background-color: rgb(250, 211, 231);
+    border-radius: 8px;
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 50px;
@@ -47,13 +49,15 @@ button {
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    width: 50%;
-    height: 200px;
+    width: 60%;
+    height: 300px;
 }
 
 #planSection {
+    align-items: center;
+    border-radius: 5px;
     font-size: 25px;
     margin-left: 30px;
     margin-top: 20px;

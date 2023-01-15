@@ -166,9 +166,14 @@ button.onclick = function() {
     let timee = document.getElementById('time').value;
 
     var output = document.createElement('li');
-    output.innerHTML = document.getElementById('task').value + '   --    ' + document.getElementById('time').value + ' hours';
+    output.innerHTML = document.getElementById('task').value + '   :    ' + document.getElementById('time').value + ' hours';
     task.push(document.getElementById('task').value)
     time.push(document.getElementById('time').value)
+    output.style.background = 'rgb(250, 211, 231)'; 
+
+    output.style.fontSize = "20px"
+    output.style.fontFamily = "Arial";
+    
     listSection.appendChild(output);
 
     let dayTask = new Task(taskk,timee);
