@@ -33,6 +33,18 @@ function timeSet() {
 
 }
 
+function convertToBinarySchedule(myDay) {
+    let newList = [];
+    for (let day of myDay.schedule) {
+        let bit = 0;
+        if (day.name == "break") {
+            bit = 1;
+        }
+        newList.push(bit);
+    }
+    return newList
+}
+
 class Task {
     constructor(name = "", length = 1) {
         this.name = name;
@@ -43,6 +55,7 @@ class Task {
 
 
 class Day {
+
     constructor(startTime, endTime) {
         this.start = startTime;
         this.end = endTime;
