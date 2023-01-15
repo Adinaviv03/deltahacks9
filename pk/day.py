@@ -52,23 +52,24 @@ class day:
             23: "11"
         }
         
+        stringTime = str(time)
+
         if time < 12:
-            if str(stringTime[-2:]) == ".5":
+            if stringTime[-2:] == ".5":
                 output = stringTime[:-2]
-                output = str(pmTimes[int(output)])
-                output += ":30pm"
+                output += ":30am"
                 return output
-                output = str(pmTimes[time]) + "pm"
-                return output
-            output = str(time) + "am"
+            output = str(int(time)) + "am"
             return output
 
 
         elif time == 0 or time == 24:
+            if stringTime[-2:] == ".5":
+                output = "12:30am"
+                return output
             output = "12am"
+            return output
         
-        
-        stringTime = str(time)
         
         if stringTime[-2:] == ".5":
             output = stringTime[:-2]
