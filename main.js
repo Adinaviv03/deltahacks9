@@ -47,8 +47,22 @@ class Task {
 
 class Day {
     constructor(startTime, endTime) {
-        this.start = startTime;
-        this.end = endTime;
+        
+        let rawStartTime = startTime.toString.split(":");
+        if (rawStartTime[1] == "30") {
+            let formattedStartTime = rawStartTime[0].parseInt + .5;
+            
+        } else {
+            let formattedStartTime = rawStartTime[0].parseInt
+        }
+        let rawEndTime = endTime.toString.split(":");
+        if (rawEndTime[1] == "30") {
+            let formattedEndTime = rawEndTime[0].parseInt + .5;
+        } else {
+            let formattedEndTime = rawEndTime[0].parseInt;
+        }
+        this.start = formattedStartTime;
+        this.end = formattedEndTime;
         this.numBlocks = (this.end - this.start) * 2;
         this.inputtedTaskList = [];
         this.schedule = [];
