@@ -261,14 +261,14 @@ function colourDay(arr){
 
     let y = 0;
     let j=0
-    let timeT = (parseInt(x*2)-10);
+    let timeT = (parseInt(x*2));
     for (let i = 0; i < cells.length; i++) {
-        if(i >= timeT){
+        if(i >= timeT+1){
             if(arr[i-timeT] == 0){
                 // if(arr[i-timeT-1] != 0){
                 //     randColour = Math.random()*200;
                 // }
-                cells[i].style.background = "rgb(randColour, 211, 231);";
+                cells[i].style.background = "black";
             }
             
         }
