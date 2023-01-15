@@ -270,7 +270,9 @@ function colourDay(arr){
                      randColour = Math.random()*100;
                      randColourtwo = Math.random()*100;
                      randColourthree = Math.random()*100;
-                     
+                     cells[i].innerHTML = task[j]
+                     cells[i].style.color = "black";
+                     j += 1
                 }
                 
                 cells[i].style.background = `rgb(${randColour},${randColourtwo}, ${randColourthree})`;
