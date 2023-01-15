@@ -140,6 +140,7 @@ class Day {
 let finalDay
 
 function makeDay(){
+    alert("Time Set");
     finalDay = new Day(timeSet()[0], timeSet()[1]);
 }
 
