@@ -57,6 +57,13 @@ class day:
             22: "10",
             23: "11"
         }
+        stringTime = str(time)
+        
+        if stringTime[-2:] == ".5":
+            output = stringTime[:-2]
+            output = str(pmTimes[int(output)])
+            output += ":30pm"
+            return output
         output = str(pmTimes[time]) + "pm"
         return output
 
@@ -74,9 +81,9 @@ class day:
             return
         
         totalBreakTime = (self.numBlocks - hoursOfWork)
-        singleBreakTime = totalBreakTime/(len(self.inputtedTaskList) - 1)
+        singleBreakTime = int(totalBreakTime/(len(self.inputtedTaskList) - 1))
 
-        break1 = task("break", singleBreakTime)
+        break1 = task("break", singleBreakTime/2)
         
         newTaskList = []
         for myTask in self.inputtedTaskList:
@@ -84,10 +91,11 @@ class day:
             newTaskList.append(break1)
         newTaskList = newTaskList[:-1]
 
-
+    
         currentIndex = 0
-        for myTask in self.inputtedTaskList:
-            blocks = myTask.length
+        for myTask in newTaskList:
+            blocks = int(myTask.length)
+            print(blocks)
             for i in range(currentIndex, currentIndex + blocks):
                 self.schedule[i] = myTask
             currentIndex += blocks
