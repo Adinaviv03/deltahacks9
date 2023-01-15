@@ -5,7 +5,55 @@ body{
 h1 {
     text-align: center;
     font-size: 60px;
+    margin: 50px;
 }
 
-#planDay {
+
+
+#inputSection {
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    
+    width: 50%;
+    height: 200px;
+}
+
+#planSection {
+    font-size: 25px;
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 40%;
+    height: 200px;
+}
+
+#planButton {
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    margin-left: 25%;
+    margin-top: 30px;
+}
+
+tr {
+    border-width: 0;
+}
+
+table{
+    background-color: beige;
+    border-width: 0;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+#fiveAM {
+    background-color: black;
+}
+
+#fiveAMM {
+    background-color: black;
 }
