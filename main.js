@@ -140,6 +140,10 @@ class Day {
 let finalDay
 
 function makeDay(){
+    if((timeSet()[0][3] != '0' || timeSet()[0][3] != '3') && (timeSet()[0][4] != '0')){
+        alert("Please enter a time ending in 00 or 30");
+    }
+    else if((timeSet()[1][3] != '0' || timeSet()[1][3] != '3') && (timeSet()[1][4] != '0'))
     alert("Time Set");
     finalDay = new Day(timeSet()[0], timeSet()[1]);
 }
