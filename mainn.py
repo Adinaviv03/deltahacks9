@@ -1,4 +1,7 @@
-from pk import day, task
+from pk.day import day
+from pk.day import task
+
+
 
 
 
