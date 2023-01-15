@@ -261,11 +261,11 @@ function colourDay(arr){
     for (let i = 0; i < cells.length; i++) {
         if(i >= timeT){
             if(arr[i-timeT] == 0){
-                if(arr[i-timeT-1] != 0){
-                    randColour = Math.random()*200;
-                }
-                cells[i].style.background = "rgb(randColour, 211, 231)";
+                // if(arr[i-timeT-1] != 0){
+                //     randColour = Math.random()*200;
+                // }
             }
+            cells[i].style.background = "black";
         }
     }
     
