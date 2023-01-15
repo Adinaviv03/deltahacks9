@@ -7,7 +7,7 @@ const listSection = document.querySelector('#planSection')
 
 button.onclick = function() {
   var output = document.createElement('li');
-  output.innerHTML = document.getElementById('task').value + '   --    ' + document.getElementById('time').value + ' minutes';
+  output.innerHTML = document.getElementById('task').value + '   --    ' + document.getElementById('time').value + ' hours';
   task.push(document.getElementById('task').value)
   time.push(document.getElementById('time').value)
   listSection.appendChild(output);
@@ -20,19 +20,9 @@ function planDay() {
     const beginT = timeSet()[0]
     const finishT = timeSet()[1]
     console.log(beginT)
+    console.log(finishT)
 
-    console.log("hello world");
-    let day1 = new Day(12, 19);
-    console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
-    console.log("I have", day1.numBlocks, "blocks available today!");
-    let task1 = new Task(task[0], time[0]);
-    let task2 = new Task(task[1], time[1]);
-    let task3 = new Task(task[2], time[2]);
-    day1.addTask(task1);
-    day1.addTask(task2);
-    day1.addTask(task3);
-    day1.createSchedule();
-    day1.displaySchedule();
+
 
 }
 
@@ -46,18 +36,6 @@ function timeSet() {
 
 }
 
-function convertToBinarySchedule(myDay) {
-    let newList = [];
-    for (let day of myDay.schedule) {
-        let bit = 0;
-        if (day.name == "break") {
-            bit = 1;
-        }
-        newList.push(bit);
-    }
-    return newList
-}
-
 class Task {
     constructor(name = "", length = 1) {
         this.name = name;
@@ -68,7 +46,6 @@ class Task {
 
 
 class Day {
-
     constructor(startTime, endTime) {
         this.start = startTime;
         this.end = endTime;
@@ -82,6 +59,13 @@ class Day {
     }
 
     static displayTime(time) {
+        if (time < 12) {
+            let output = time + "am";
+            return output;
+        } else if (time === 0 || time === 24) {
+            return "12am";
+        }
+
         let pmTimes = {
             12: "12",
             13: "1",
@@ -98,24 +82,8 @@ class Day {
         };
 
         let stringTime = time.toString();
-        
-        if (time < 12) {
-            if (stringTime.endsWith(".5")){
-                let output = stringTime.slice(0, -2);
-                output += ":30pm";
-                return output;
-            }
-            let output = time + "am";
-            return output;
-        } else if (time === 0 || time === 24) {
-            if (stringTime.endsWith(".5")){
-                output += "12:30am";
-                return output;
-            }
-            return "12am";
-        }
 
-        else if (stringTime.endsWith(".5")) {
+        if (stringTime.endsWith(".5")) {
             let output = stringTime.slice(0, -2);
             output = pmTimes[parseInt(output)];
             output += ":30pm";
@@ -181,6 +149,7 @@ class Day {
     }
 
 }
+
 
 
 
