@@ -70,6 +70,14 @@ class Task {
     }
 }
 
+function timeConverter(rawTime) {
+    const rawTime = rawTime.split(":");
+    let formattedTime = rawTime[0].parseInt;
+    if (rawTime[1] == "30") {
+        formattedTime = formattedTime + 0.5;
+    }
+    return formattedTime
+}
 
 class Day {
     constructor(startTime, endTime) {
