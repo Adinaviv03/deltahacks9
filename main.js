@@ -245,8 +245,6 @@ function timeConverter(rawTime) {
 }
 
 
-let arr = [1,1,1,0,0,1,0,0,1,1,0]
-colourDay(arr);
 
 
 function colourDay(arr){
@@ -267,9 +265,9 @@ function colourDay(arr){
         if(i >= timeT){
             if(arr[i-timeT] == 0){
                 if(arr[i-timeT-1] != 0){
-                     randColour = Math.random()*100;
-                     randColourtwo = Math.random()*100;
-                     randColourthree = Math.random()*100;
+                     randColour = Math.random()*500;
+                     randColourtwo = Math.random()*500;
+                     randColourthree = Math.random()*500;
                      cells[i].innerHTML = task[j]
                      cells[i].style.color = "black";
                      j += 1
