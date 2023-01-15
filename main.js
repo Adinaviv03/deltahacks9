@@ -11,6 +11,7 @@ button.onclick = function() {
   task.push(document.getElementById('task').value)
   time.push(document.getElementById('time').value)
   listSection.appendChild(output);
+
 };
 
 mainDiv.appendChild(button);
@@ -22,7 +23,7 @@ function planDay() {
     console.log(beginT)
     console.log(finishT)
     
-    let day1 = new Day(12, 19);
+    let day1 = new Day(timeSet()[0], timeSet()[1]);
     console.log("My day starts at", Day.displayTime(day1.start) , "and ends at", Day.displayTime(day1.end));
     console.log("I have", day1.numBlocks, "blocks available today!");
     let task1 = new Task(task[0], time[0]);
@@ -34,7 +35,8 @@ function planDay() {
     day1.createSchedule();
     day1.displaySchedule();
 
-    colourDay();
+    let binaryArr = convertToBinarySchedule(myDay)
+    colourDay(binaryArr);
 }
 
 function timeSet() {
@@ -72,14 +74,16 @@ class Task {
 class Day {
     constructor(startTime, endTime) {
         
-        const rawStartTime = startTime.toString().split(":");
+        const rawStartTime = startTime.split(":");
+        let formattedStartTime = 0;
         if (rawStartTime[1] == "30") {
             formattedStartTime = rawStartTime[0].parseInt + .5;
             
         } else {
             formattedStartTime = rawStartTime[0].parseInt
         }
-        const rawEndTime = endTime.toString().split(":");
+        const rawEndTime = endTime.split(":");
+        let formattedEndTime = 0;
         if (rawEndTime[1] == "30") {
             formattedEndTime = rawEndTime[0].parseInt + .5;
         } else {
@@ -206,7 +210,9 @@ function colourDay(arr){
     let table = document.getElementById("dayTable");
     let cells = table.querySelectorAll("td:nth-child(2)");
     for (let i = 0; i < cells.length; i++) {
-        cells[i].style.background = "black";
+        if(arr[i] == 0){
+            cells[i].style.background = "black";
+        }
     }
     
 }
