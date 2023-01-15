@@ -22,8 +22,6 @@ function planDay() {
     console.log(beginT)
     console.log(finishT)
 
-
-
 }
 
 function timeSet() {
