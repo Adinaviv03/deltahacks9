@@ -59,7 +59,7 @@ class day:
         }
         stringTime = str(time)
         
-        if str(stringTime[-2:]) == ".5":
+        if stringTime[-2:] == ".5":
             output = stringTime[:-2]
             output = str(pmTimes[int(output)])
             output += ":30pm"
