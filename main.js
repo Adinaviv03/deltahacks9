@@ -72,18 +72,18 @@ class Task {
 class Day {
     constructor(startTime, endTime) {
         
-        let rawStartTime = startTime.toString.split(":");
+        const rawStartTime = startTime.toString().split(":");
         if (rawStartTime[1] == "30") {
-            let formattedStartTime = rawStartTime[0].parseInt + .5;
+            formattedStartTime = rawStartTime[0].parseInt + .5;
             
         } else {
-            let formattedStartTime = rawStartTime[0].parseInt
+            formattedStartTime = rawStartTime[0].parseInt
         }
-        let rawEndTime = endTime.toString.split(":");
+        const rawEndTime = endTime.toString().split(":");
         if (rawEndTime[1] == "30") {
-            let formattedEndTime = rawEndTime[0].parseInt + .5;
+            formattedEndTime = rawEndTime[0].parseInt + .5;
         } else {
-            let formattedEndTime = rawEndTime[0].parseInt;
+            formattedEndTime = rawEndTime[0].parseInt;
         }
         this.start = formattedStartTime;
         this.end = formattedEndTime;
